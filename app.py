@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from datetime import datetime
+from datetime import datetime, timezone
 import json
 import os
 
@@ -22,7 +22,7 @@ def receive_webhook():
 
     # Attach server timestamp
     log_entry = {
-        "received_at": datetime.utcnow().isoformat(),
+        "received_at": datetime.now(timezone.utc).isoformat(),
         "payload": data
     }
 

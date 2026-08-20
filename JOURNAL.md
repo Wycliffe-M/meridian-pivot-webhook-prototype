@@ -55,6 +55,13 @@
 - **What actually resolved it:** Switched to Python/Flask, a language I'm already learning, so I could isolate the *webhook* learning curve from the *language* learning curve.
 - **Time spent stuck:** ~1 hr 50 mins (folded into pivot decision, not wasted — informed the final approach)
 
+### Blocker 4
+- **What I was trying to do:** Re-check `app.py` for any warnings after getting it working.
+- **What went wrong (error message, unexpected behavior, confusion):** Noticed a `DeprecationWarning` for `datetime.utcnow()` in newer Python versions (3.12+).
+- **What I tried first:** Looked up the warning message in the terminal output.
+- **Why that didn't work:** N/A — found the fix directly from Python's own deprecation notice.
+- **What actually resolved it:** Replaced `datetime.utcnow()` with `datetime.now(timezone.utc)`, the current recommended approach for timezone-aware UTC timestamps.
+- **Time spent stuck:** ~5 mins
 ---
 
 ## 4. What I Understand Now (End of Day 2)
@@ -63,6 +70,10 @@
 - **Environment Setup:** Virtual environment (`venv`) setup and package activation were initialized prior to dependencies installation and server implementation.
 - **Receiving Webhooks:** An endpoint route listens for incoming HTTP requests, validates the payload header/JSON body, processes or logs the data, and returns an immediate HTTP status response (e.g., `200 OK`) to acknowledge receipt.
 - **Future Considerations:** To use webhooks in production, I would need to implement payload signature verification (HMAC secret keys) for security, use a public tunneling service (like ngrok) or host the server online, and add proper queueing or database storage.
+
+## Why This Matters for the Sprint
+
+This webhook prototype isn't just a standalone exercise — it directly prepares for Day 4 of the Meridian Pivot. Solstice Events Co.'s badge-printer vendor is deprecating its synchronous print API, forcing a switch to an asynchronous model: publishing print requests to a message queue and receiving completion confirmations via a webhook callback. Understanding how a webhook receiver works now — parsing incoming payloads, responding correctly, logging events — is exactly the skill needed to build that callback endpoint when the pivot hits.
 
 
 ---
