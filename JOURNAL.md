@@ -9,8 +9,8 @@
 ## 1. Time Log
 
 | Date | Time started | Time ended | Total time spent |
-|---|---|---|---|
-| 2026-08-20 | 20:00 | 21:20 | 1 hr 20 mins |
+|------|--------------|------------|------------------|
+| 2026-08-20 | 20:00 -| 21:20 -----|   1 hr 20 mins   |
 
 ---
 
@@ -46,8 +46,10 @@
 ## 4. What I Understand Now (End of Day 2)
 
 - **Webhook vs. Polling:** Polling requires a client to repeatedly request data from a server at fixed intervals to check for updates. A webhook reverses this by having the server automatically push an HTTP POST request to a client endpoint only when an event occurs.
+- **Environment Setup:** Virtual environment (`venv`) setup and package activation were initialized prior to dependencies installation and server implementation.
 - **Receiving Webhooks:** An endpoint route listens for incoming HTTP requests, validates the payload header/JSON body, processes or logs the data, and returns an immediate HTTP status response (e.g., `200 OK`) to acknowledge receipt.
 - **Future Considerations:** To use webhooks in production, I would need to implement payload signature verification (HMAC secret keys) for security, use a public tunneling service (like ngrok) or host the server online, and add proper queueing or database storage.
+
 
 ---
 
