@@ -8,9 +8,13 @@
 
 ## 1. Time Log
 
-| Date | Time started | Time ended | Total time spent |
-|------|--------------|------------|------------------|
-| 2026-08-20 | 20:00 -| 21:20 -----|   1 hr 20 mins   |
+| Date       | Time started | Time ended | Total time spent | Notes |
+|------------|--------------|------------|-------------------|-------|
+| 2026-08-19 | 00:30        | 04:30      | 4 hrs             | Research phase — webhook QuickStart docs, YouTube overview video, explored Beeceptor + GitHub webhooks (triggered by starring a repo) |
+| 2026-08-19 | 12:09        | ~14:00     | ~1 hr 50 mins     | First hands-on attempt — installed Node.js, explored webhook boilerplates before switching to Python/Flask |
+| 2026-08-20 | 20:00        | 21:20      | 1 hr 20 mins      | Built and tested `app.py` (Flask webhook receiver) |
+
+**Total time-box across all sessions: ~7 hrs 10 mins**
 
 ---
 
@@ -20,6 +24,8 @@
 |---|---|---|---|
 | 1 | Flask Official Documentation | How to route POST requests and parse incoming JSON | `@app.route` with `methods=["POST"]` handles incoming webhooks, and `request.get_json()` parses the incoming data payload. |
 | 2 | Microsoft PowerShell Documentation | Fixing header/cURL parameter binding errors in PowerShell | PowerShell maps `curl` to `Invoke-WebRequest` by default; using `Invoke-RestMethod` is the native way to send JSON payloads. |
+| 3 | Beeceptor + GitHub Webhooks | How webhooks trigger in a real no-code setting | Set up a Beeceptor endpoint linked to GitHub webhooks — confirmed a repo "star" event actually fired a webhook, before writing any code myself |
+| 4 | YouTube webhook overview video | General conceptual understanding of webhooks | Got the basic mental model: something triggers an event, a payload is sent to a listening endpoint, which can verify and act on it |
 
 ---
 
@@ -40,6 +46,14 @@
 - **Why that didn't work:** PowerShell's alias interprets `-H` differently than standard cURL syntax.
 - **What actually resolved it:** Used `Invoke-RestMethod` with native PowerShell parameters (`-Uri`, `-Method`, `-ContentType`, `-Body`).
 - **Time spent stuck:** ~10 mins
+
+### Blocker 3
+- **What I was trying to do:** Build a webhook handler using Node.js, following boilerplate examples.
+- **What went wrong (error message, unexpected behavior, confusion):** Not an error exactly — realized I was learning Node.js syntax at the same time as webhook concepts, which doubled the unfamiliarity and slowed me down.
+- **What I tried first:** Installed Node.js and looked at boilerplate handler code.
+- **Why that didn't work:** Too much new material at once — couldn't tell which parts were "webhook concept" and which were "Node.js syntax."
+- **What actually resolved it:** Switched to Python/Flask, a language I'm already learning, so I could isolate the *webhook* learning curve from the *language* learning curve.
+- **Time spent stuck:** ~1 hr 50 mins (folded into pivot decision, not wasted — informed the final approach)
 
 ---
 
